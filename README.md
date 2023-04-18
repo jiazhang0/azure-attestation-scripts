@@ -44,12 +44,12 @@ For a quick start, simply run `ci_test.sh` to validate Azure Attestation functio
 
 You can also run single script to execute the specified functions, including:
 - [create_maa_instance.sh](create_maa_instance.sh): create a MAA instance
-- [add_policy_signing_cert.sh](add_policy_signing_cert.sh): add policy signing certificate
-- [list_policy_signing_cert.sh](list_policy_signing_cert.sh): list policy signing certificates
-- [configure_policy.sh](configure_policy.sh): configure policy
-- [show_policy.sh](show_policy.sh): show policy
-- [reset_policy.sh](reset_policy.sh): reset policy
-- [delete_policy_signing_cert.sh](delete_policy_signing_cert.sh): delete policy signing certificate
-- [decode.sh](decode.sh): decode the resulting JWT or base64 encoded x509 certificate
-- [sign_jws.py](sign_jws.py): sign JWS requests required by Azure Attestation
-- [delete_maa_instance.sh](delete_maa_instance.sh): delete a MAA instance
+- [add_policy_signing_cert.sh](add_policy_signing_cert.sh): add a policy signing certificate
+- [list_policy_signing_cert.sh](list_policy_signing_cert.sh): list all policy signing certificates added
+- [configure_policy.sh](configure_policy.sh): configure a policy
+- [show_policy.sh](show_policy.sh): show the configured policy
+- [reset_policy.sh](reset_policy.sh): reset the configured policy
+- [delete_policy_signing_cert.sh](delete_policy_signing_cert.sh): delete the policy signing certificate added
+- [delete_maa_instance.sh](delete_maa_instance.sh): delete the MAA instance
+- [decode.sh](decode.sh): decode the resulting JWT or base64-encoded x509 certificate
+- [sign_jws.py](sign_jws.py): generate a JWS as request parameter required by Azure Attestation
