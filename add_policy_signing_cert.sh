@@ -4,6 +4,16 @@ set -e
 
 echo "Adding new policy signing certificate ..."
 
+maa_trust_model=$(az attestation show \
+  --name $AZURE_MAA_CUSTOM_RESOURCE_NAME \
+  --resource-group $AZURE_RESOURCE_GROUP \
+  --query trustModel --output tsv)
+
+if [[ "$maa_trust_model" == "AAD" ]]; then
+  echo "AAD trust model doesn't support to add policy signing cert"
+  exit 0
+fi
+
 ./sign_jws.py --payload my_policy_signing_cert.pem \
   --signing-key root_policy_signing_private_key.pem \
   --signing-cert root_policy_signing_cert.pem

@@ -1,15 +1,17 @@
-Azure Attestation Scripts
+# Azure Attestation Scripts
 
-# Purpose
+## Purpose
 
-These scripts are used to build and test [Azure Attestation](https://azure.microsoft.com/en-us/products/azure-attestation) through [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/service-page/azure%20attestation?view=azure-cli-latest) and [REST APIs](https://learn.microsoft.com/en-us/rest/api/attestation/) under the **Isolated** trust model. This model is enabled only if the root policy signing certificate is imported along with the creation of MAA instance.
+These scripts are used to build and test [Azure Attestation](https://azure.microsoft.com/en-us/products/azure-attestation) through [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/service-page/azure%20attestation?view=azure-cli-latest) and [REST APIs](https://learn.microsoft.com/en-us/rest/api/attestation/) under the **Isolated** and **AAD** trust models. The "Isloated" trust model is enabled only if the root policy signing certificate is imported along with the creation of MAA instance. By defaylt, the "AAD" trust model is enabled.
 
-# Preparation
+## Preparation
 
 Please modify env.sh.in according to your Azure subscription and save it as env.sh, then run
 ```shell
 source env.sh
 ```
+
+In the following steps, you will need to manually create policy signing keys for "Isolated" trust mode. If not necessary, just omit the following steps.
 
 Next step is to create a root policy signing certificate and create the MAA instance with it, such as:
 ```shell
@@ -36,7 +38,7 @@ openssl req -x509 -new -key my_policy_signing_private_key.pem \
 
 The resulting `my_policy_signing_cert.pem` will be used later.
 
-# Usage
+## Usage
 
 For a quick start, simply run `ci_test.sh` to validate Azure Attestation functions.
 

@@ -23,7 +23,7 @@ if [[ "$maa_trust_model" == "Isolated" ]]; then
 elif [[ "$maa_trust_model" == "AAD" ]]; then
   payload="eyJhbGciOiJub25lIn0.."
 else
-  echo "Unsupported MAA trust model"
+  echo "Unsupported MAA trust model $maa_trust_model"
   exit 1
 fi
 

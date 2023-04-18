@@ -4,6 +4,16 @@ set -e
 
 echo "Deleting policy signing certificate ..."
 
+maa_trust_model=$(az attestation show \
+  --name $AZURE_MAA_CUSTOM_RESOURCE_NAME \
+  --resource-group $AZURE_RESOURCE_GROUP \
+  --query trustModel --output tsv)
+
+if [[ "$maa_trust_model" == "AAD" ]]; then
+  echo "AAD trust model doesn't support to delete policy signing cert"
+  exit 0
+fi
+
 policy_signing_cert_to_delete=my_policy_signing_cert.pem.jws
 
 if [[ $USE_AZ_CLI == "1" ]]; then
