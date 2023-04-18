@@ -65,8 +65,7 @@ elif not is_policy:
     print("Only police in AAD trust model can be unsigned")
     sys.exit(1)
 else:
-    claim_set = {'AttestationPolicy': base64url_encode(
-        payload_in.encode('utf-8'))}
+    claim_set = {'AttestationPolicy': base64url_encode(payload_in)}
     jws_to_save = jwt.encode(claim_set, None, algorithm=None)
     save_jws(jws_to_save, False)
     sys.exit(0)
