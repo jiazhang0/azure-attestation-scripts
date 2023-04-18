@@ -2,7 +2,7 @@ Azure Attestation Scripts
 
 # Purpose
 
-These scripts are used to build and test [Azure Attestation](https://azure.microsoft.com/en-us/products/azure-attestation) through [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/service-page/azure%20attestation?view=azure-cli-latest) and [REST APIs](https://learn.microsoft.com/en-us/rest/api/attestation/).
+These scripts are used to build and test [Azure Attestation](https://azure.microsoft.com/en-us/products/azure-attestation) through [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/service-page/azure%20attestation?view=azure-cli-latest) and [REST APIs](https://learn.microsoft.com/en-us/rest/api/attestation/) under the **Isolated** trust model. This model is enabled only if the root policy signing certificate is imported along with the creation of MAA instance.
 
 # Preparation
 
