@@ -40,7 +40,7 @@ else
       --resource https://attest.azure.net \
       --query accessToken --output tsv`" \
     -d "$payload" \
-    "https://$AZURE_MAA_ENDPOINT/policies/$AZURE_ATTESTATION_TYPE:reset?api-version=2022-08-01" | \
+    "https://$AZURE_MAA_ENDPOINT/policies/$AZURE_ATTESTATION_TYPE:reset?api-version=$AZURE_MAA_API_VERSION" | \
   jq .
 fi
 

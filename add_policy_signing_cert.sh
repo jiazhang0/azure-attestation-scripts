@@ -32,6 +32,6 @@ else
       --resource https://attest.azure.net \
       --query accessToken --output tsv`" \
     -d "\"$policy_signing_cert_to_add\"" \
-    "https://$AZURE_MAA_ENDPOINT/certificates:add?api-version=2022-08-01" | \
+    "https://$AZURE_MAA_ENDPOINT/certificates:add?api-version=$AZURE_MAA_API_VERSION" | \
   jq .
 fi

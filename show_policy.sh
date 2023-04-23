@@ -15,6 +15,6 @@ else
     -H "Authorization: Bearer `az account get-access-token \
       --resource https://attest.azure.net \
       --query accessToken --output tsv`" \
-    "https://$AZURE_MAA_ENDPOINT/policies/$AZURE_ATTESTATION_TYPE?api-version=2022-08-01" | \
+    "https://$AZURE_MAA_ENDPOINT/policies/$AZURE_ATTESTATION_TYPE?api-version=$AZURE_MAA_API_VERSION" | \
   jq .
 fi
