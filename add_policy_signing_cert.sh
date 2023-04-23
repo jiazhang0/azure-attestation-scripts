@@ -21,17 +21,32 @@ fi
 policy_signing_cert_to_add=$(cat my_policy_signing_cert.pem.jws)
 
 if [[ $USE_AZ_CLI == "1" ]]; then
-  az attestation signer add \
-    --name $AZURE_MAA_CUSTOM_RESOURCE_NAME \
-    --resource-group $AZURE_RESOURCE_GROUP \
-    --signer $policy_signing_cert_to_add
+  cmd_to_run=$(cat <<EOF
+az attestation signer add \
+  --name \$AZURE_MAA_CUSTOM_RESOURCE_NAME \
+  --resource-group \$AZURE_RESOURCE_GROUP \
+  --signer \$policy_signing_cert_to_add
+EOF
+)
+
+  [[ "$DEBUG" == "1" ]] && cmd_to_run="$cmd_to_run --debug --verbose"
+
 else
-  curl -X POST \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer `az account get-access-token \
-      --resource https://attest.azure.net \
-      --query accessToken --output tsv`" \
-    -d "\"$policy_signing_cert_to_add\"" \
-    "https://$AZURE_MAA_ENDPOINT/certificates:add?api-version=$AZURE_MAA_API_VERSION" | \
-  jq .
+  cmd_to_run=$(cat <<EOF
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer `az account get-access-token \
+    --resource https://attest.azure.net \
+    --query accessToken --output tsv`" \
+  -d "\"\$policy_signing_cert_to_add\"" \
+  "https://\$AZURE_MAA_ENDPOINT/certificates:add?api-version=\$AZURE_MAA_API_VERSION"
+EOF
+)
+
+  [[ "$DEBUG" == "1" ]] && cmd_to_run="$cmd_to_run --verbose"
+
+  cmd_to_run="$cmd_to_run | jq ."
+
 fi
+
+eval $cmd_to_run

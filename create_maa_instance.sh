@@ -11,5 +11,6 @@ EOF
 )
 
 [ -f root_policy_signing_cert.pem ] && cmd_to_run="$cmd_to_run --certs-input-path root_policy_signing_cert.pem"
+[[ "$DEBUG" == "1" ]] && cmd_to_run="$cmd_to_run --debug --verbose"
 
 eval $cmd_to_run

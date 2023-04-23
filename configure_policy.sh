@@ -33,15 +33,24 @@ EOF
 )
 
   [[ "$maa_trust_model" == "Isolated" ]] && cmd_to_run="$cmd_to_run --policy-format JWT"
+  [[ "$DEBUG" == "1" ]] && cmd_to_run="$cmd_to_run --debug --verbose"
 
-  eval $cmd_to_run
 else
-  curl -X PUT \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer `az account get-access-token \
-      --resource https://attest.azure.net \
-      --query accessToken --output tsv`" \
-    -d "$(cat $policy_to_configure)" \
-    "https://$AZURE_MAA_ENDPOINT/policies/$AZURE_ATTESTATION_TYPE?api-version=$AZURE_MAA_API_VERSION" | \
-  jq .
+  cmd_to_run=$(cat <<EOF
+curl -X PUT \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer `az account get-access-token \
+    --resource https://attest.azure.net \
+    --query accessToken --output tsv`" \
+  -d "\$(cat \$policy_to_configure)" \
+  "https://\$AZURE_MAA_ENDPOINT/policies/\$AZURE_ATTESTATION_TYPE?api-version=\$AZURE_MAA_API_VERSION"
+EOF
+)
+
+  [[ "$DEBUG" == "1" ]] && cmd_to_run="$cmd_to_run --verbose"
+
+  cmd_to_run="$cmd_to_run | jq ."
+
 fi
+
+eval $cmd_to_run
