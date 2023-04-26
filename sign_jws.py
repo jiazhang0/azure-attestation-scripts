@@ -7,6 +7,7 @@ import base64
 import sys
 import cryptography
 import json
+import os
 from cryptography import x509
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import padding
@@ -51,7 +52,7 @@ def base64url_encode(bytes):
 
 
 def save_jws(jws_to_save, signed=True):
-    name = "{}.jws".format(args.payload)
+    name = "{}.jws".format(os.path.basename(args.payload))
     with open(name, 'w') as f:
         f.write(jws_to_save)
     print("{} {} generated".format("Unsigned" if not signed else "Signed", name))
