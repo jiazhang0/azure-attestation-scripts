@@ -15,6 +15,7 @@ trap cleanup ERR
 ./list_policy_signing_cert.sh
 ./configure_policy.sh
 ./show_policy.sh
+./attest.sh
 ./reset_policy.sh
 ./delete_policy_signing_cert.sh
 ./delete_maa_instance.sh
