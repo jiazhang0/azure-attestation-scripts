@@ -59,4 +59,4 @@ fi
 
 eval $cmd_to_run
 
-[[ "$AUTO_CLEANUP" == "1" ]] && rm -f policy_to_reset.jws policy.jws
+[[ "$AUTO_CLEANUP" == "1" ]] && rm -f policy_to_reset.jws policy.jws || exit 0

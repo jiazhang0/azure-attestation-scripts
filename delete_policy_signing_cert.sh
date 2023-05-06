@@ -49,4 +49,4 @@ fi
 
 eval $cmd_to_run
 
-[[ "$AUTO_CLEANUP" == "1" ]] && rm -f my_policy_signing_cert.pem.jws
+[[ "$AUTO_CLEANUP" == "1" ]] && rm -f my_policy_signing_cert.pem.jws || exit 0
