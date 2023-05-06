@@ -28,6 +28,12 @@ report=$(cat <<EOF
 EOF
 )
 
+# Note that SevSnp only supports JSON InitTimeData payload.
+# So the initTimeData verification will be available in such a way:
+# "initTimeData": {
+#   "data": "$(./base64url_encode.py samples/security-context/uvm_security_policy.rego)",
+#   "dataType": "BINARY"
+# }
 attest_req_body=$(cat <<EOF
 {
   "report": "$(base64url_encode $report)",
