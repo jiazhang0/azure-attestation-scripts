@@ -50,3 +50,4 @@ You can also run a single script to execute the specified function.
 - [delete_maa_instance.sh](delete_maa_instance.sh): delete the MAA instance
 - [decode.sh](decode.sh): decode the resulting JWT or base64-encoded x509 certificate
 - [sign_jws.py](sign_jws.py): generate a JWS as request parameter required by Azure Attestation
+- [dump_report.sh](dump_report.sh): dump the content of sample SNP Attestation Report
