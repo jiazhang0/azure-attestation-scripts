@@ -13,14 +13,14 @@ if [[ "$maa_trust_model" == "Isolated" ]]; then
   ./sign_jws.py --payload samples/policy \
     --signing-key my_policy_signing_private_key.pem \
     --signing-cert my_policy_signing_cert.pem
+  policy_to_configure=policy.jws
 elif [[ "$maa_trust_model" == "AAD" ]]; then
   ./sign_jws.py --payload samples/policy
+  policy_to_configure=samples/policy
 else
   echo "Unsupported MAA trust model $maa_trust_model"
   exit 1
 fi
-
-policy_to_configure=policy.jws
 
 if [[ $USE_AZ_CLI == "1" ]]; then
   cmd_to_run=$(cat <<EOF
