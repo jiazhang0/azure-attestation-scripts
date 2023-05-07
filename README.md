@@ -41,6 +41,8 @@ For a quick start, simply run `ci_test.sh` to validate Azure Attestation functio
 You can also run a single script to execute the specified function.
 
 - [create_maa_instance.sh](create_maa_instance.sh): create a MAA instance
+- [get_metadata_configuration.sh](get_metadata_configuration.sh): get MAA metadata configuration
+- [get_token_signer_certs.sh](get_token_signer_certs.sh): get the token signer certificates
 - [add_policy_signing_cert.sh](add_policy_signing_cert.sh): add a policy signing certificate
 - [list_policy_signing_cert.sh](list_policy_signing_cert.sh): list all policy signing certificates added
 - [configure_policy.sh](configure_policy.sh): configure a policy

@@ -11,6 +11,8 @@ function cleanup() {
 trap cleanup ERR
 
 ./create_maa_instance.sh
+./get_metadata_configuration.sh
+./get_token_signer_certs.sh
 ./add_policy_signing_cert.sh
 ./list_policy_signing_cert.sh
 ./configure_policy.sh
