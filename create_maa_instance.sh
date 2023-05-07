@@ -2,7 +2,7 @@
 
 set -e
 
-echo "Creating the MAA instance .$AZURE_MAA_CUSTOM_RESOURCE_NAME ..."
+echo "Creating the MAA instance $AZURE_MAA_CUSTOM_RESOURCE_NAME ..."
 
 cmd_to_run=$(cat <<EOF
 az attestation create
