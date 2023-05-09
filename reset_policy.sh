@@ -41,7 +41,7 @@ EOF
 
 else
   cmd_to_run=$(cat <<EOF
-curl -X POST \
+curl -s -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer `az account get-access-token \
     --resource https://attest.azure.net \

@@ -5,7 +5,7 @@ set -e
 echo "Getting the token signer certificates ..."
 
 cmd_to_run=$(cat <<EOF
-curl -X GET
+curl -s -X GET
   https://$AZURE_MAA_ENDPOINT/certs
 EOF
 )
